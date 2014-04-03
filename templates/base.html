@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Lifelogger</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+        <!-- Stylesheet -->
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- jQuery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+        <!-- jQuery UI -->
+        <script src="{{ url_for('static', filename='js/jquery-ui-1.10.4.custom.js') }}"></script>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/ui-darkness/jquery-ui-1.10.4.custom.css') }}">
+
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <div id="header">
+            <div id="header-content">
+                <span class="logo">Lifelogger</span>
+                <div class="login">
+                    {% if not session.logged_in %}
+                        <a href="{{ url_for('login') }}">log in</a>
+                    {% else %}
+                        <a href="{{ url_for('logout') }}">log out</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>
