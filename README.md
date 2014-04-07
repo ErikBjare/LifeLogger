@@ -40,10 +40,13 @@ Essentially a tool to aid in [instrumental rationality](https://en.wikipedia.org
 
 ## Technologies used:
 These are currently only propositions, and are subject to change.
+ - Python 3.2+
  - Flask, an excellent microframework (might change in the future)
  - peewee, ORM used together with Flask thanks to flask-peewee
  - peewee-compatible database (SQLite, MySQL or PostgreSQL)
  - MongoDB, to store users logdata (might change in the future)
+ - Bootstrap, for efficient and decent web-design
+ - Backbone.js
  - Vagrant, for easy testing and deployment
  - Chef or Puppet, for configuration management
 
