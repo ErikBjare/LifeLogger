@@ -12,17 +12,23 @@
         <!-- jQuery -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-        <!-- jQuery UI -->
-        <script src="{{ url_for('static', filename='js/jquery-ui-1.10.4.custom.js') }}"></script>
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/ui-darkness/jquery-ui-1.10.4.custom.css') }}">
+        <!-- Some JS -->
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
         {% block head %}{% endblock %}
     </head>
     <body>
         <div id="header">
             <div id="header-content">
-                <span class="logo">Lifelogger</span>
-                <div class="login">
+                <div class="float-left">Float right</div>
+                    <div style="position: absolute; left: 50%;">
+                                <div style="position: relative; left: -50%;">
+                        <div id="logo">
+                            <span style="color: #6D6">Life</span><span style="color: #F44;">Logger</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="float-right">
                     {% if not session.logged_in %}
                         <a href="{{ url_for('login') }}">log in</a>
                     {% else %}
@@ -31,8 +37,10 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            {% block body %}{% endblock %}
+        <div id="wrapper">
+            <div class="container">
+                {% block body %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>
