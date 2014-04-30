@@ -39,15 +39,22 @@ If you are interested in how this whole thing got started, and why we think it i
  - **This sounds like an incredible data-source to mine, will this be done?**  
    We too see the potential to use users logs to get access to data otherwise expensive and timeconsuming to create, it poses a significant data privacy threat however, one which we take _very_ seriously. So this is an open question, we hope that we can do this without violating the privacy of our users, if we can't we wont.
 
-## Technologies used:
+## Technologies used
 These are currently only propositions, and are subject to change.
- - Python 3.2+
- - Flask, an excellent microframework (might change in the future)
- - MongoDB, to store users logdata (With [PyMongo](http://api.mongodb.org/python/current/) and [Flask-PyMongo](https://github.com/dcrosta/flask-pymongo/))
- - Bootstrap, for efficient and decent web-design
+
+#### Backend
+ - Go or Python 3.2+ (with Flask)
+ - MongoDB
+ - Vagrant
+ - Chef or Puppet (probably Chef as I'm already used to it)
+
+If Python is chosen it will use [PyMongo](http://api.mongodb.org/python/current/) and [Flask-PyMongo](https://github.com/dcrosta/flask-pymongo/) for MongoDB integration.
+
+#### Frontend
+ - Bootstrap
+ - SASS
  - Backbone.js
- - Vagrant, for easy testing and deployment
- - Chef or Puppet, for configuration management
+ - Angular?
 
 -----
 Erik Bjäreholt - <erik@bjareho.lt>
