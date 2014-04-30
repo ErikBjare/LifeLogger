@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config.update(dict(
     DEBUG=True
