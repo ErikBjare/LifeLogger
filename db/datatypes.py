@@ -1,7 +1,3 @@
-import unittest
-import math
-
-
 class Datatype():
     def __init__(self, name, data):
         self.name = name

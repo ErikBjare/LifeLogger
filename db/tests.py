@@ -1,18 +1,20 @@
 __author__ = 'erb'
 
 import unittest
+import math
 
 import pymongo
 import pymongo.errors
 
-from db import *
+from db import client, db
+from db.model import Sheet
+from db.datatypes import *
 
 
 class DatabaseTestTemplate(unittest.TestCase):
     def setUp(self):
         self.db = client.lifelogger_test_notebook
         [self.db.drop_collection(collection) for collection in set(self.db.collection_names()) - {"system.indexes"}]
-        db_setup(self.db)
 
         self.users = self.db["users"]
         self.sheets = self.db["sheets"]
@@ -58,7 +60,8 @@ class SheetTests(DatabaseTestTemplate):
         self.sheet = Sheet(self.test_user, db=self.db)
 
     def test_something(self):
-        pass
+        self.sheet.add_3_a_day("tiredness")
+        self.assertEquals("tiredness", self.sheet.data["order"][-1][0])
 
 
 class ModelTest(unittest.TestCase):
