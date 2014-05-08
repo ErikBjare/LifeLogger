@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+  {% block body %}
+    <div class="row pagination-centered" style="margin-top: 2em;">
+      <div class="col-md-3 col-md-offset-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">{% block form_heading %}{% endblock %}</div>
+          </div>
+          <div class="panel-body">
+            {% block form_body %}
+            This template should be extended!
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+

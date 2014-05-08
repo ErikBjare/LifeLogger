@@ -7,7 +7,7 @@ import pymongo
 import pymongo.errors
 
 from db import client, db
-from db.model import Sheet
+from db.model import Sheet, User
 from db.datatypes import *
 
 
@@ -71,6 +71,13 @@ class ModelTest(unittest.TestCase):
     def test_model(self):
         pass
 
+class UserTest(unittest.TestCase):
+    def setUp(self):
+        self.user = User.new("erb", "42", "email@example.com")
+        self.user.save()
+
+    def test_create(self):
+        self.assertIsNotNone(User.get(email="email@example.com"))
 
 class DatatypeTests(unittest.TestCase):
     def setUp(self):

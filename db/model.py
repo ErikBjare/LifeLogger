@@ -22,10 +22,21 @@ def state_change(func):
     return func_dec
 
 
-class Model():
+def model(cls):
+    collection_name = cls.__class__.__name__.lower()+"s"
+    try:
+        coll = db[collection_name]
+    except TypeError:
+        coll = db.create_collection(cls.__class__.__name__.lower()+"s")
+    cls.collection = coll
+    return cls
+
+
+class BaseModel():
     """Baseclass for a MongoDB model"""
+
     def __init__(self):
-        self.collection = db.create_collection(self.__class__.__name__.lower()+"s")
+        pass
 
     def create(self, document):
         self.collection.insert(document)
@@ -34,15 +45,55 @@ class Model():
         """Saves changes to database"""
         self.collection.save(self.data)
 
+    def __str__(self):
+        return str(self.data)
 
-class User(Model):
-    def __init__(self):
-        self.collection.create_index([("email", pymongo.HASHED)], safe=True)
-        self.collection.create_index([("username", pymongo.HASHED)], safe=True)
+    @classmethod
+    def load(cls, data):
+        user = cls()
+        user.data = data
+        return user
+
+    @classmethod
+    def find(cls, **kwargs):
+        data = cls.collection.find(kwargs)
+        if data:
+            return [cls.load(doc) for doc in data]
+        else:
+            return None
+
+    @classmethod
+    def find_one(cls, **kwargs):
+        doc = cls.collection.find_one(kwargs)
+        if doc:
+            return cls.load(doc)
+        else:
+            return None
 
 
-class Sheet(Model):
+@model
+class User(BaseModel):
+    @classmethod
+    def new(cls, username, password, email):
+        user = cls()
+        user.data = {"username": username, "password": password, "email": email}
+        user.save()
+        print("Created user: {} ({})".format(username, email))
+        return user
+
+
+    @classmethod
+    def get(cls, **kwargs):
+        for id in ["email", "username"]:
+            if id in kwargs:
+                return cls.load(cls.collection.find_one({id: kwargs[id]}))
+
+
+@model
+class Sheet(BaseModel):
     """Model for logging-sheets"""
+
+    @state_change
     def __init__(self, user, year=None, month=None, **kwargs):
         Model.__init__(self)
         if "db" in kwargs.keys():

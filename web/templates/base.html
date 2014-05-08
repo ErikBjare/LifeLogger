@@ -3,9 +3,6 @@
     <head>
         <title>Lifelogger</title>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
         <!-- Stylesheet -->
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -15,32 +12,13 @@
         <!-- Some JS -->
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+
         {% block head %}{% endblock %}
     </head>
     <body>
-        <div id="header">
-            <div id="header-content">
-                <div class="float-left">Float right</div>
-                    <div style="position: absolute; left: 50%;">
-                                <div style="position: relative; left: -50%;">
-                        <div id="logo">
-                            <span style="color: #6D6">Life</span><span style="color: #F44;">Logger</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="float-right">
-                    {% if not session.logged_in %}
-                        <a href="{{ url_for('login') }}">log in</a>
-                    {% else %}
-                        <a href="{{ url_for('logout') }}">log out</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div id="wrapper">
-            <div class="container">
-                {% block body %}{% endblock %}
-            </div>
-        </div>
+    {% block body %}Body goes here!{% endblock %}
     </body>
 </html>
