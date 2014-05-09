@@ -49,6 +49,13 @@ class BaseModel():
         return str(self.data)
 
     @classmethod
+    def get(cls, **kwargs):
+        for id in kwargs:
+            doc = cls.collection.find_one({id: kwargs[id]})
+            if doc:
+                return cls.load(doc)
+
+    @classmethod
     def load(cls, data):
         user = cls()
         user.data = data
@@ -78,35 +85,25 @@ class User(BaseModel):
         user = cls()
         user.data = {"username": username, "password": password, "email": email}
         user.save()
-        print("Created user: {} ({})".format(username, email))
+        print("Created user: ".format(user.data))
         return user
-
-
-    @classmethod
-    def get(cls, **kwargs):
-        for id in ["email", "username"]:
-            if id in kwargs:
-                return cls.load(cls.collection.find_one({id: kwargs[id]}))
 
 
 @model
 class Sheet(BaseModel):
     """Model for logging-sheets"""
 
-    @state_change
-    def __init__(self, user, year=None, month=None, **kwargs):
-        Model.__init__(self)
-        if "db" in kwargs.keys():
-            self.db = kwargs["db"]
-        else:
-            self.db = db.db
+    @classmethod
+    def new(cls, user, year=None, month=None, **kwargs):
+        sheet = Sheet()
         if year and month:
             d = datetime(year, month, 1)
         elif year or month:
             raise ValueError("You must specify both year and month, or neither.")
         else:
             d = datetime.now()
-        self.data = self.get_document(user, d.year, d.month)
+        sheet.data = sheet.get_document(user, d.year, d.month)
+        return sheet
 
     def get_document(self, user, year, month):
         documents = self.collection.find({"username": user["username"]})

@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect
+from flask.ext.login import LoginManager
+from flask.ext.openid import OpenID
 
 import db
 
@@ -14,9 +16,18 @@ def home():
     return render_template("index.html")
 
 
-@app.route('/login')
+# ToDo: Passwords need hashing
+# ToDo: OpenID
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return "Nothing to see here, yet"
+    if request.method == 'POST':
+        user = db.User.get(**request.form)
+        if user:
+            return "Login successful!<br>Welcome {}".format(user.data["username"])
+        else:
+            return "Invalid username/email or password."
+    else:
+        return render_template("forms/login.html")
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -25,7 +36,7 @@ def register():
         db.User.new(request.form["username"], request.form["password"], request.form["email"])
         return str(db.User.get(email=request.form["email"]))
     else:
-        return render_template("register.html")
+        return render_template("forms/register.html")
 
 if __name__ == '__main__':
     app.run()

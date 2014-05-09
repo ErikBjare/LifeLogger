@@ -1,14 +1,13 @@
-{% extends "form.html" %}
-
+{% extends "forms/form.html" %}
 
   {% block form_heading %}
-    Register
+    Login
   {% endblock %}
 
   {% block form_body %}
   <form class="form-group" method="post">
     <div class="input-group input-group">
-      <span class="input-group-addon">Username</span>
+      <span class="input-group-addon">Username or Email</span>
       <input type="text" name="username" class="form-control">
     </div>
     <br>
@@ -16,12 +15,6 @@
     <div class="input-group input-group">
       <span class="input-group-addon">Password</span>
       <input type="password" name="password" class="form-control">
-    </div>
-    <br>
-
-    <div class="input-group input-group">
-      <span class="input-group-addon">Email</span>
-      <input type="text" name="email" class="form-control">
     </div>
     <br>
 
