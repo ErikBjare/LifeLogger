@@ -1,14 +1,12 @@
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 import calendar
 from random import randint
-
-from flask import Flask, render_template, request, redirect
-from flask.ext.login import LoginManager
-from flask.ext.openid import OpenID
-from bs4 import BeautifulSoup
 import pprint
 
+from flask import Flask, render_template, request
+
 import db
+
 
 app = Flask(__name__, static_folder="web/static", template_folder="web/templates")
 app.config.update(dict(
@@ -45,7 +43,7 @@ def register():
 
 
 @app.route('/sheet', methods=['GET'])
-def sheet():
+def view_sheet():
     # Testing constants
     start_date = date(2014, 3, 1)
     day = timedelta(days=1)
@@ -57,6 +55,11 @@ def sheet():
     try:
         sheet.add_3_a_day("mood")
         sheet.add_3_a_day("productivity")
+        sheet.add_group("exercise")
+        sheet.add_field("gym", "exercise")
+        sheet.add_field("running", "exercise")
+        sheet.add_field("biking", "exercise")
+
     except KeyError:
         pass
 
@@ -67,7 +70,7 @@ def sheet():
         for group, labels in sheet.data["order"]:
             first = True
             for _ in labels:
-                border_style = "border-width: 0 0 0 1px" if first else "border-width: 0 0 0 0"
+                border_style = "border-left: black solid 1px;" if first else ""
                 first = False
                 val = randint(1, 10)
                 color = "red" if val < 3 else ("yellow" if val < 7 else "green")
@@ -77,7 +80,7 @@ def sheet():
 
     sheet_pretty = pprint.pformat(sheet.data)
 
-    return render_template('sheet.html', rows=rows, sheet=sheet.data, sheet_pretty=sheet_pretty)
+    return render_template('sheet.html', rows=rows, sheet=sheet, sheet_pretty=sheet_pretty, user=user_erb)
 
 if __name__ == '__main__':
     app.run()

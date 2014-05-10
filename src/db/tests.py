@@ -1,3 +1,5 @@
+from src.db import db
+
 __author__ = 'erb'
 
 import unittest
@@ -6,9 +8,7 @@ import math
 import pymongo
 import pymongo.errors
 
-import db
-from db import client, db
-import db.model
+from db import client
 from db.models import *
 from db.datatypes import *
 

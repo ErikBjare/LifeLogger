@@ -32,17 +32,14 @@ html, body {
   height: 100%;
   padding: 5px; }
 
-td {
-  padding: 5px; }
-
 tr.types {
   font-size: 8pt; }
 
 td.red {
-  background-color: #F11; }
+  box-shadow: 0 0 5px 2px red inset; }
 
 td.yellow {
-  background-color: #FF0; }
+  box-shadow: 0 0 5px 2px yellow inset; }
 
 td.green {
-  background-color: #5F5; }
+  box-shadow: 0 0 5px 2px lime inset; }

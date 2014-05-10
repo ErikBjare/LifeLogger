@@ -1,11 +1,11 @@
+from src.db import db, model
+
 __author__ = 'erb'
 
-from db import db
-from db.db import *
-from db.datatypes import *
+from .db import *
+from .datatypes import *
 
-from db import model
-from db.models import *
+from .models import *
 
 from pymongo.errors import CollectionInvalid
 

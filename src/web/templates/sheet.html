@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="panel panel-primary">
+    <div class="panel-heading panel-title">Sheet for {{ user["username"] }}</div>
+
+    <table class="table">
+      <tr style="border-width: 0;">
+        <td></td>
+        {% for group, labels in sheet["order"] %}
+          <th colspan="{{ labels | length }}">
+            {{ group | capitalize }}
+          </th>
+        {% endfor %}
+      </tr>
+      <tr style="border-width: 0;">
+        <td></td>
+        {% for group, labels in sheet["order"] %}
+          {% for label in labels %}
+            <th>
+              {{ label }}
+            </th>
+          {% endfor %}
+        {% endfor %}
+      </tr>
+      <tr class="types" style="border-width: 0; height: 1em;">
+        <td></td>
+        {% for group, labels in sheet["order"] %}
+          {% for label in labels %}
+            <td>
+              {{ sheet["fields"][group][label]["datatype"] }}
+            </td>
+          {% endfor %}
+        {% endfor %}
+      </tr>
+      {% for date, cells in rows %}
+        <tr>
+          <th style="width: 8em;">
+            {{ date }}
+          </th>
+          {% for cell in cells %}
+            {{ cell|safe }}
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <pre>
+    {{ sheet_pretty }}
+  </pre>
+{% endblock %}

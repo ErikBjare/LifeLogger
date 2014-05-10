@@ -2,9 +2,7 @@ __author__ = 'erb'
 
 from datetime import datetime
 
-from pymongo.collection import Collection
-
-from . model import BaseModel, state_change, check_datatype
+from .model import BaseModel, state_change, check_datatype
 
 
 class User(BaseModel):
@@ -13,7 +11,9 @@ class User(BaseModel):
         user = cls()
         user.data = {"username": username, "password": password, "email": email}
         user.save()
-        print("Created user: ".format(user.data))
+        display_user = user.data.copy()
+        display_user["password"] = "[redacted]"
+        print("Created user: {}".format(display_user))
         return user
 
 

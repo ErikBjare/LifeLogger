@@ -1,0 +1,52 @@
+@import 'mixins';
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+#header {
+  @include gradient(#BBB, #FFF);
+  color: #000;
+  background-color: #CCC;
+  border: 1px solid #000;
+  border-width: 0 0 1px 0;
+
+  .float-left {
+    padding: 5px
+  }
+  .float-right {
+    padding: 5px
+  }
+
+  #header-content {
+    font-size: 16pt;
+    height: 42px;
+  }
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+
+tr.types {
+  font-size: 8pt;
+}
+
+td.red { @include cell-highlight(#F00) }
+td.yellow { @include cell-highlight(#FF0) }
+td.green { @include cell-highlight(#0F0) }

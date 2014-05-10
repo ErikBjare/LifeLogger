@@ -3,3 +3,8 @@
   background: -moz-linear-gradient(top,  $from, $to);
   filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
 }
+
+@mixin cell-highlight($color) {
+  box-shadow: 0 0 5px 2px $color inset;
+}
+
