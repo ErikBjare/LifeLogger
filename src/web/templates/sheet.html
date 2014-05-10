@@ -1,5 +1,10 @@
 {% extends "index.html" %}
 
+{% block head %}
+  {{ super() }}
+  <script type="application/javascript" src="{{ url_for('static', filename='js/sheet.js') }}"></script>
+{% endblock %}
+
 {% block content %}
   <div class="panel panel-primary">
     <div class="panel-heading panel-title">Sheet for {{ user["username"] }}</div>

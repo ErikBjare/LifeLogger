@@ -1,22 +1,21 @@
 <!doctype html>
 <html>
 <head>
-  <title>Lifelogger</title>
+  {% block head %}
+    <title>Lifelogger</title>
 
-  <!-- Stylesheet -->
-  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Stylesheet -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 
-  <!-- jQuery -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-  <!-- Some JS -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Some JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-
-
-  {% block head %}{% endblock %}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  {% endblock %}
 </head>
 <body>
 {% block body %}

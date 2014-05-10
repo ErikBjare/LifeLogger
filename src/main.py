@@ -74,7 +74,7 @@ def view_sheet():
                 first = False
                 val = randint(1, 10)
                 color = "red" if val < 3 else ("yellow" if val < 7 else "green")
-                cells.append("<td class=\"{}\" style=\"{}\">{}</td>".format(color, border_style, val))
+                cells.append("<td class=\"cell {}\" style=\"{}\">{}</td>".format(color, border_style, val))
         row_date = str((start_date+i*day).isoformat())
         rows.append((row_date, cells))
 
