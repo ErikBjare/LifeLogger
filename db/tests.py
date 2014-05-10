@@ -6,8 +6,10 @@ import math
 import pymongo
 import pymongo.errors
 
+import db
 from db import client, db
-from db.model import Sheet, User
+import db.model
+from db.models import *
 from db.datatypes import *
 
 
@@ -31,9 +33,9 @@ class DatabaseTests(DatabaseTestTemplate):
         self.tester = {"username": "tester", "name": "Test McTest", "email": "tester@example.com"}
 
     def test_collections(self):
-        collections = db.collection_names()
+        collections = db.database.collection_names()
         for collection in ["users", "sheets"]:
-            self.assertTrue(collection in collections)
+            self.assertTrue(collection in collections, str(collection) + " | " + str(collections))
 
     def test_users(self):
         erb_id = self.users.insert(self.erb)
@@ -57,7 +59,7 @@ class DatabaseTests(DatabaseTestTemplate):
 class SheetTests(DatabaseTestTemplate):
     def setUp(self):
         DatabaseTestTemplate.setUp(self)
-        self.sheet = Sheet(self.test_user, db=self.db)
+        self.sheet = Sheet.new(self.test_user)
 
     def test_something(self):
         self.sheet.add_3_a_day("tiredness")

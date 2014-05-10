@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block content %}
+  {% autoescape false %}
+    <div class="panel panel-danger">
+      <div class="panel-heading">Panel heading</div>
+
+      <table class="table">
+        <tr style="border-width: 0;">
+          <td></td>
+          {% for group, labels in sheet["order"] %}
+            <td colspan="{{ labels | length }}">
+              {{ group | capitalize }}
+            </td>
+          {% endfor %}
+        </tr>
+        <tr style="border-width: 0;">
+          <td></td>
+          {% for group, labels in sheet["order"] %}
+            {% for label in labels %}
+              <td>
+                {{ label }}
+              </td>
+            {% endfor %}
+          {% endfor %}
+        </tr>
+        <tr class="types" style="border-width: 0;">
+          <td></td>
+          {% for group, labels in sheet["order"] %}
+          {% for label in labels %}
+          <td>
+            {{ sheet["fields"][group][label]["datatype"] }}
+          </td>
+          {% endfor %}
+          {% endfor %}
+        </tr>
+        {% for date, cells in rows %}
+          <tr>
+            <td>
+              {{ date }}
+            </td>
+            {% for cell in cells %}
+              {{ cell }}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% endautoescape %}
+
+  <pre>
+    {{ sheet_pretty }}
+  </pre>
+{% endblock %}

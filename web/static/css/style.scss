@@ -40,3 +40,11 @@ html, body {
 }
 
 
+td {
+  padding: 5px;
+}
+
+tr.types { font-size: 8pt; }
+td.red { background-color: #F11; }
+td.yellow { background-color: #FF0; }
+td.green { background-color: #5F5; }
