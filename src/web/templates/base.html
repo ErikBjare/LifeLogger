@@ -4,9 +4,6 @@
   {% block head %}
     <title>Lifelogger</title>
 
-    <!-- Stylesheet -->
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
-
     <!-- jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
@@ -15,6 +12,10 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <!-- Stylesheet -->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
   {% endblock %}
 </head>
 <body>

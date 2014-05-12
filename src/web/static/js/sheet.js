@@ -4,13 +4,18 @@ function cell_onclick(e) {
     console.log(e.target);
     var text = e.target.text();
     e.target.text('');
-    $('<input type="text" id="curr_input" style="width: 50px"/>').appendTo(e.target).val(text).select().blur(
-        function(){
-            var newText = $('#curr_input').val();
-            console.log(newText)
-            e.target.text(newText).find('input').remove();
-        });
-    console.log("lol")
+    function save_cell() {
+        var newText = $('#curr_input').val();
+        console.log(newText)
+        e.target.text(newText).parent().find('input').remove();
+    }
+    textbox = $('<input type="text" class="input" id="curr_input"/>');
+    textbox.appendTo(e.target).val(text).select();
+    //textbox.blur(save_cell);
+    textbox.bind("enterKey", save_cell);
+    textbox.keyup(function(e){
+        if(e.keyCode == 13) $(this).trigger("enterKey");
+    });
 }
 
 function init() {

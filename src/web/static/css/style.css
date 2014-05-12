@@ -32,6 +32,13 @@ html, body {
   height: 100%;
   padding: 5px; }
 
+.cell, .table > tbody > tr > td {
+  padding: 0px; }
+  .cell .inner, .table > tbody > tr > td .inner {
+    padding: 8px; }
+    .cell .inner .input, .cell .inner .input:focus, .table > tbody > tr > td .inner .input, .table > tbody > tr > td .inner .input:focus {
+      border: 0px; }
+
 tr.types {
   font-size: 8pt; }
 

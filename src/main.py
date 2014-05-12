@@ -59,7 +59,6 @@ def view_sheet():
         sheet.add_field("gym", "exercise")
         sheet.add_field("running", "exercise")
         sheet.add_field("biking", "exercise")
-
     except KeyError:
         pass
 
@@ -74,7 +73,10 @@ def view_sheet():
                 first = False
                 val = randint(1, 10)
                 color = "red" if val < 3 else ("yellow" if val < 7 else "green")
-                cells.append("<td class=\"cell {}\" style=\"{}\">{}</td>".format(color, border_style, val))
+                cells.append("""
+                    <td class=\"cell {}\" style=\"{}\">
+                        <div class=\"inner\">{}</div>
+                    </td>""".format(color, border_style, val))
         row_date = str((start_date+i*day).isoformat())
         rows.append((row_date, cells))
 

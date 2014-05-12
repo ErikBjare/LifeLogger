@@ -43,6 +43,17 @@ html, body {
   padding: 5px;
 }
 
+.cell, .table>tbody>tr>td {
+  padding: 0px;
+
+  .inner {
+    padding: 8px;
+    .input, .input:focus {
+      border: 0px;
+    }
+  }
+}
+
 tr.types {
   font-size: 8pt;
 }
