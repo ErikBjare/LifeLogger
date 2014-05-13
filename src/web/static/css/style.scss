@@ -43,13 +43,18 @@ html, body {
   padding: 5px;
 }
 
+.table {
+  table-layout: fixed;
+}
+
 .cell, .table>tbody>tr>td {
   padding: 0px;
-
+  overflow: hidden;
   .inner {
     padding: 8px;
-    .input, .input:focus {
+    .input, .input:focus, .input:active {
       border: 0px;
+      width: 100%;
     }
   }
 }

@@ -1,12 +1,10 @@
 
 function cell_onclick(e) {
     e.target = $(e.target);
-    console.log(e.target);
     var text = e.target.text();
     e.target.text('');
     function save_cell() {
         var newText = $('#curr_input').val();
-        console.log(newText)
         e.target.text(newText).parent().find('input').remove();
     }
     textbox = $('<input type="text" class="input" id="curr_input"/>');

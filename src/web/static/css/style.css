@@ -32,12 +32,17 @@ html, body {
   height: 100%;
   padding: 5px; }
 
+.table {
+  table-layout: fixed; }
+
 .cell, .table > tbody > tr > td {
-  padding: 0px; }
+  padding: 0px;
+  overflow: hidden; }
   .cell .inner, .table > tbody > tr > td .inner {
     padding: 8px; }
-    .cell .inner .input, .cell .inner .input:focus, .table > tbody > tr > td .inner .input, .table > tbody > tr > td .inner .input:focus {
-      border: 0px; }
+    .cell .inner .input, .cell .inner .input:focus, .cell .inner .input:active, .table > tbody > tr > td .inner .input, .table > tbody > tr > td .inner .input:focus, .table > tbody > tr > td .inner .input:active {
+      border: 0px;
+      width: 100%; }
 
 tr.types {
   font-size: 8pt; }
