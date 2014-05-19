@@ -2,13 +2,7 @@
 <html>
 <head>
   {% block head %}
-    <title>Lifelogger</title>
-
-    <!-- jQuery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-    <!-- Some JS -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <title>LifeLogger</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
@@ -16,6 +10,13 @@
     <!-- Stylesheet -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 
+    <!-- jQuery, Underscore & Backbone.js -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/underscore.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/backbone.js') }}"></script>
+
+    <!-- Some JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   {% endblock %}
 </head>
 <body>

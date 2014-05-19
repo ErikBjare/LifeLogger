@@ -43,26 +43,4 @@ html, body {
   padding: 5px;
 }
 
-.table {
-  table-layout: fixed;
-}
-
-.cell, .table>tbody>tr>td {
-  padding: 0px;
-  overflow: hidden;
-  .inner {
-    padding: 8px;
-    .input, .input:focus, .input:active {
-      border: 0px;
-      width: 100%;
-    }
-  }
-}
-
-tr.types {
-  font-size: 8pt;
-}
-
-td.red { @include cell-highlight(#F00) }
-td.yellow { @include cell-highlight(#FF0) }
-td.green { @include cell-highlight(#0F0) }
+@import "sheet.scss";
