@@ -1,3 +1,8 @@
+## WARNING! DEPRECATED
+This project has moved, and its code is no longer open for the public.
+It it in development though, you may check out the current version at: [http:/habitlogger.appspot.com/](http:/habitlogger.appspot.com/)
+
+
 LifeLogger
 ==========
 
