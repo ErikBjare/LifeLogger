@@ -1,6 +1,5 @@
-## WARNING! DEPRECATED
-This project has moved, and its code is no longer open for the public.
-It it in development though, you may check out the current version at: [http:/habitlogger.appspot.com/](http:/habitlogger.appspot.com/)
+## WARNING! ABANDONED
+This project was abandoned for another cause. But the awesome [@ejain](https://github.com/ejain) is keeping up the good fight with [Zenobase](http://zenobase.com/), you should definitely check it out.
 
 
 LifeLogger
